@@ -13,7 +13,7 @@ import src.models.ExcecaoDeDominio;
 public class ExcecaoDeDominioTest {
 
     @Test
-    public void deveLancarExcecao() {
+    public void deveLancarExcecao_QuandoACondicaoForVerdadeira() {
         var excecaoLancada = new ExcecaoDeDominio();
         var mensagemDeErro = "excecao lancada pelo dominio";
         var exception = assertThrows(ExceptionInInitializerError.class,
@@ -23,7 +23,7 @@ public class ExcecaoDeDominioTest {
     }
 
     @Test
-    public void naoDeveLancarExcecao() {
+    public void naoDeveLancarExcecao_QuandoACondicaoNaoForVerdadeira() {
         var excecaoDeDominio = new ExcecaoDeDominio();
         assertDoesNotThrow(() -> excecaoDeDominio.Quando(false, "erro").Lancar());
 
