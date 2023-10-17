@@ -1,3 +1,4 @@
+package src.models;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ExcecaoDeDominio {
 
     public void Lancar() throws Exception {
         if (MensagensDeErros.size() > 0) {
-            throw new Exception(MensagensDeErros.get(0));
+            throw new ExceptionInInitializerError(MensagensDeErros.get(0));
         }
     }
 }

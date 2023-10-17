@@ -1,5 +1,7 @@
+package src.models;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class QuartaDeFinal {
     private int QuantidadeDeFilmePermitido = 8;
