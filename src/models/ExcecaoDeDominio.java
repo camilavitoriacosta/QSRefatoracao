@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcecaoDeDominio {
-    public List<String> MensagensDeErros;
+    public List<String> MensagensDeErros = new ArrayList<String>();
 
     public ExcecaoDeDominio() {
         MensagensDeErros = new ArrayList<String>();
@@ -21,4 +21,6 @@ public class ExcecaoDeDominio {
             throw new ExceptionInInitializerError(MensagensDeErros.get(0));
         }
     }
+
+    
 }
