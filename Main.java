@@ -1,7 +1,5 @@
 import java.util.List;
-
 import net.datafaker.Faker;
-
 import src.models.Filme;
 import src.models.Final;
 import src.models.QuartaDeFinal;

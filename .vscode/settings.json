@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/junit-platform-console-standalone-1.8.1.jar",
+        "lib/automaton-1.11-8.jar",
+        "datafaker-2.0.2.jar",
+        "generex-1.0.2.jar",
+        "snakeyaml-2.2.jar",
+        "lib\\datafaker-2.0.2.jar",
+        "lib\\generex-1.0.2.jar",
+        "lib\\junit-platform-console-standalone-1.10.0.jar",
+        "lib\\snakeyaml-2.2.jar"
+    ]
+}
