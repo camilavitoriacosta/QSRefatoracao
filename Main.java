@@ -1,5 +1,7 @@
 import java.util.List;
+
 import net.datafaker.Faker;
+import src.models.CriterioEnum;
 import src.models.Filme;
 import src.models.Final;
 import src.models.QuartaDeFinal;
@@ -12,26 +14,26 @@ public class Main {
         List<Filme> participantes = faker.<Filme>collection()
                 .suppliers(() -> {
                     try {
-                        return new Filme().gerarFilme(faker); 
+                        return new Filme().gerarFilme(faker);
                     } catch (Exception e) {
-                       return new Filme();
+                        return new Filme();
                     }
                 })
                 .nullRate(0)
                 .maxLen(8)
                 .generate();
 
-        List<Filme> vencedoresQuartasDeFinal = new QuartaDeFinal(participantes).competir();
+        List<Filme> vencedoresQuartasDeFinal = new QuartaDeFinal(participantes, CriterioEnum.NOTA).competir();
         List<Filme> vencedoresSemiFinal = new SemiFinal(vencedoresQuartasDeFinal).competir();
         Filme vencedor = new Final(vencedoresSemiFinal).competir();
 
+        // Filme vencedor = new Final(vencedoresSemiFinal, new
+        // ClassificarPorNota()).competir();
 
-        // Filme vencedor = new Final(vencedoresSemiFinal, new ClassificarPorNota()).competir();
-
-        System.out.printf("O vencedor eh: RUFEM OS TAMBORES -------- \n" 
-                + "O id do livro: %s \n" 
+        System.out.printf("O vencedor eh: RUFEM OS TAMBORES -------- \n"
+                + "O id do livro: %s \n"
                 + "O titulo eh: %s \n"
-                + "O ano de publicacao: %d \n" 
+                + "O ano de publicacao: %d \n"
                 + "A nota do livro: %.2f \n",
                 vencedor.getId(),
                 vencedor.getTitulo(),
