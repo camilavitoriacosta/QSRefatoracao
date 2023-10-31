@@ -1,5 +1,6 @@
 package src.models;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class SemiFinal extends Competicao {
@@ -13,6 +14,7 @@ public class SemiFinal extends Competicao {
                 .Quando(validarParticipantes(participantes), "Participante deve ser valido")
                 .Lancar();
         this.participantes = participantes;
+        this.participantes.sort(Comparator.comparingDouble(Filme::getNota).reversed());
     }
 
     public List<Filme> competir() {
