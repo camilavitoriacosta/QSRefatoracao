@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 
 import org.junit.Test;
 
+import src.models.CriterioPorNota;
 import src.models.Filme;
 import src.models.SemiFinal;
 
@@ -22,7 +23,7 @@ public class SemiFinalTest extends TestConfig {
         var participantes = gerarFilmes(0, 5, 20);
 
         var exception = assertThrows(ExceptionInInitializerError.class,
-                () -> new SemiFinal(participantes));
+                () -> new SemiFinal(participantes, new CriterioPorNota()));
 
         assertEquals("Para realizar a semi final é necessário ter 4 filmes", exception.getMessage());
     }
@@ -32,7 +33,7 @@ public class SemiFinalTest extends TestConfig {
         List<Filme> participantes = gerarFilmes(1, 4, 4);
 
         var exception = assertThrows(ExceptionInInitializerError.class,
-                () -> new SemiFinal(participantes));
+                () -> new SemiFinal(participantes, new CriterioPorNota()));
 
         assertEquals("Participante deve ser valido", exception.getMessage());
     }
@@ -41,14 +42,14 @@ public class SemiFinalTest extends TestConfig {
     public void naoDeveLancarExcecao_QuandoInformarOsParticipantesValidos() {
         List<Filme> participantes = gerarFilmes(0, 4, 4);
 
-        assertDoesNotThrow(() -> new SemiFinal(participantes));
+        assertDoesNotThrow(() -> new SemiFinal(participantes, new CriterioPorNota()));
     }
 
     @Test
     public void deveRetornarDoisGanhadoresComAsMaioresNotas_QuandoInformarParticipantesValidos() throws Exception {
         List<Filme> participantes = gerarFilmes(0, 4, 4);
 
-        var ganhadoresDaSemiFinal = new SemiFinal(participantes).competir();
+        var ganhadoresDaSemiFinal = new SemiFinal(participantes, new CriterioPorNota()).competir();
 
         participantes.sort(Comparator.comparingDouble(Filme::getNota).reversed());
         var ganhadoresEsperados = IntStream.range(0, participantes.size())

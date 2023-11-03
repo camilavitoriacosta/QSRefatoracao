@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 import org.junit.Test;
 
-import src.models.CriterioEnum;
+import src.models.CriterioPorNota;
 import src.models.Filme;
 import src.models.QuartaDeFinal;
 
@@ -23,7 +23,7 @@ public class QuartaDeFinalTest extends TestConfig {
         var participantes = gerarFilmes(0, 9, 20);
 
         var exception = assertThrows(ExceptionInInitializerError.class,
-                () -> new QuartaDeFinal(participantes, CriterioEnum.NOTA));
+                () -> new QuartaDeFinal(participantes, new CriterioPorNota()));
 
         assertEquals("Para realizar a quarta de final é necessário ter 8 filmes", exception.getMessage());
     }
@@ -33,7 +33,7 @@ public class QuartaDeFinalTest extends TestConfig {
         List<Filme> participantes = gerarFilmes(1, 8, 8);
 
         var exception = assertThrows(ExceptionInInitializerError.class,
-                () -> new QuartaDeFinal(participantes, CriterioEnum.NOTA));
+                () -> new QuartaDeFinal(participantes, new CriterioPorNota()));
 
         assertEquals("Participante deve ser valido", exception.getMessage());
     }
@@ -42,14 +42,14 @@ public class QuartaDeFinalTest extends TestConfig {
     public void naoDeveLancarExcecao_QuandoInformarOsParticipantesValidos() {
         List<Filme> participantes = gerarFilmes(0, 8, 8);
 
-        assertDoesNotThrow(() -> new QuartaDeFinal(participantes, CriterioEnum.NOTA));
+        assertDoesNotThrow(() -> new QuartaDeFinal(participantes, new CriterioPorNota()));
     }
 
     @Test
     public void deveRetornarQuatroGanhadoresComAsMaioresNotas_QuandoInformarParticipantesValidos() throws Exception {
         List<Filme> participantes = gerarFilmes(0, 8, 8);
 
-        var ganhadoresDaQuartaDeFinal = new QuartaDeFinal(participantes, CriterioEnum.NOTA).competir();
+        var ganhadoresDaQuartaDeFinal = new QuartaDeFinal(participantes, new CriterioPorNota()).competir();
 
         participantes.sort(Comparator.comparingDouble(Filme::getNota).reversed());
         var ganhadoresEsperados = IntStream.range(0, participantes.size())
