@@ -24,5 +24,4 @@ public abstract class TestConfig {
                 .maxLen(maxLen)
                 .generate();
     }
-
 }

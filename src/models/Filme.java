@@ -1,6 +1,5 @@
 package src.models;
 
-import java.time.LocalDateTime;
 import net.datafaker.Faker;
 
 public class Filme {

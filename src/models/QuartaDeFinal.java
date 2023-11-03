@@ -1,6 +1,7 @@
 package src.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class QuartaDeFinal {
@@ -12,9 +13,11 @@ public class QuartaDeFinal {
         new ExcecaoDeDominio()
                 .Quando(participantes.size() != QuantidadeDeFilmePermitido,
                         "Para realizar a quarta de final é necessário ter 8 filmes")
+                .Quando(Competicao.validarParticipantes(participantes), "Participante deve ser valido")
                 .Lancar();
         this.x = participantes;
         this.criterio = criterio;
+        this.x.sort(Comparator.comparingDouble(Filme::getNota).reversed());
     }
 
     public List<Filme> competir() {

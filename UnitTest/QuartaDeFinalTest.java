@@ -59,5 +59,4 @@ public class QuartaDeFinalTest extends TestConfig {
         assertTrue(ganhadoresEsperados.containsAll(ganhadoresDaQuartaDeFinal));
         assertEquals(4, ganhadoresDaQuartaDeFinal.size());
     }
-
 }
