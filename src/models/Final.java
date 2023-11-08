@@ -16,7 +16,8 @@ public class Final extends Competicao {
     // }
 
     public Final(List<Filme> participantes)  throws Exception  {
-        new ExcecaoDeDominio()
+        new ExcecaoDeDominio<>(participantes)
+                .when(it -> it.size() != QuantidadeDeFilmePermitido, "aa")
                 .Quando(participantes.size() != QuantidadeDeFilmePermitido,
                         "Para realizar a final é necessário ter 2 filmes")
                 .Quando(validarParticipantes(participantes), "Participante deve ser valido")

@@ -1,5 +1,8 @@
 package src.models;
 
+import src.comparator.AnoComparator;
+import src.comparator.NotaComparator;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +25,13 @@ public class QuartaDeFinal {
 
     public List<Filme> competir() {
         List<Filme> vencedores = new ArrayList<>();
+
+        this.x.stream()
+                .sorted(criterio == CriterioEnum.NOTA ? new NotaComparator() : new AnoComparator())
+                .limit(4)
+                .toList();
+
+
         for (int i = 0; i < x.size(); i += 2) {
             Filme filme1 = x.get(i);
             Filme filme2 = x.get(i + 1);
